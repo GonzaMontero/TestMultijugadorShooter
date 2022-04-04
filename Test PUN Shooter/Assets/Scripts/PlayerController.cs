@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,17 +13,39 @@ public class PlayerController : MonoBehaviour
     bool grounded;
     Vector3 smoothMoveVelovity;
     Vector3 moveAmount;
+    PhotonView PV;
 
     private void Awake()
     {
+        MenuManager.Instance.CloseMenu("Room");
         rb = GetComponent<Rigidbody>();
+        PV = GetComponent<PhotonView>();
+
+        Cursor.lockState = (CursorLockMode.Confined);
+        Cursor.visible = false;
+    }
+
+    private void Start()
+    {
+        if (!PV.IsMine)
+        {
+            Destroy(GetComponentInChildren<Camera>().gameObject);
+            Destroy(rb);
+        }    
     }
 
     private void Update()
     {
+        if (!PV.IsMine)
+        {
+            return;
+        }
         Look();
         Move();
         Jump();
+
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
     }
 
     private void Move()
@@ -57,6 +80,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!PV.IsMine)
+        {
+            return;
+        }
         rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
     }
 }
