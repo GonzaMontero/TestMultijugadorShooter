@@ -21,6 +21,12 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
         Instance = this;
     }
 

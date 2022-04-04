@@ -9,6 +9,12 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
         Instance = this;
     }
 
