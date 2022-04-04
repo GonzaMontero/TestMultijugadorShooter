@@ -130,5 +130,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         PhotonNetwork.LoadLevel(1);
+        MenuManager.Instance.CloseMenu("Room");
     }
 }
