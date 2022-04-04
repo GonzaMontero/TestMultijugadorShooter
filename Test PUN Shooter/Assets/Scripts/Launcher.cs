@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Chat;
 using TMPro;
 using Photon.Realtime;
 using System.Linq;
@@ -59,6 +58,11 @@ public class Launcher : MonoBehaviourPunCallbacks
         MenuManager.Instance.OpenMenu("Room");
         roomNameText.text = PhotonNetwork.CurrentRoom.Name;
 
+        foreach(Transform child in playerListContent)
+        {
+            Destroy(child.gameObject);
+        }
+
         Player[] players = PhotonNetwork.PlayerList;
 
         for (int i = 0; i < players.Count(); i++)
@@ -100,6 +104,8 @@ public class Launcher : MonoBehaviourPunCallbacks
 
         for (int i = 0; i < roomList.Count; i++)
         {
+            if (roomList[i].RemovedFromList)
+                continue;  
             Instantiate(roomListItemPrefab, roomListContent).GetComponent<RoomListItem>().SetUp(roomList[i]);
         }
     }
