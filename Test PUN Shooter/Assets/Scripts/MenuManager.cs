@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
         menus.Clear();
         if(_scene.buildIndex==0)
         {
-            GameObject[] _menus = GameObject.FindGameObjectsWithTag("Menus");
+            GameObject[] _menus = GameObject.FindGameObjectsWithTag("Main Menu");
             foreach (GameObject item in _menus)
             {
                 menus.Add(item.GetComponent<Menu>());
