@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
-    [SerializeField] Menu[] menus;
+    [SerializeField] List<Menu> menus;
 
     private void Awake()
     {
@@ -16,46 +18,61 @@ public class MenuManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         Instance = this;
+
+        SceneManager.sceneLoaded += OnSceneneLoaded;
+    }
+
+    private void OnSceneneLoaded(Scene _scene, LoadSceneMode mode)
+    {
+        menus.Clear();
+        if(_scene.buildIndex==0)
+        {
+            GameObject[] _menus = GameObject.FindGameObjectsWithTag("Menus");
+            foreach (GameObject item in _menus)
+            {
+                menus.Add(item.GetComponent<Menu>());
+            }
+        }
     }
 
     public void OpenMenu(string menuName)
     {
-        for (int i = 0; i < menus.Length; i++)
+        foreach (Menu item in menus)
         {
-            if (menus[i].menuName == menuName)
+            if (item.menuName == menuName)
             {
-                menus[i].Open();
+                item.Open();
             }
-            else if (menus[i].open)
+            else if (item.open)
             {
-                CloseMenu(menus[i]);
+                CloseMenu(item);
             }
         }
     }
 
     public void OpenMenu(Menu menu)
     {
-        for (int i = 0; i < menus.Length; i++)
+        foreach (Menu item in menus)
         {
-            if (menus[i].open)
+            if (item.open)
             {
-                menus[i].Close();
+                item.Close();
             }
         }
-            menu.Open();
+        menu.Open();
     }
 
     public void CloseMenu(string menuName)
     {
-        for (int i = 0; i < menus.Length; i++)
+        foreach (Menu item in menus)
         {
-            if (menus[i].menuName == menuName)
+            if (item.menuName == menuName)
             {
-                menus[i].Close();
+                item.Close();
             }
-            else if (menus[i].open)
+            else if (item.open)
             {
-                CloseMenu(menus[i]);
+                CloseMenu(item);
             }
         }
     }
