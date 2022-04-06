@@ -550,6 +550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4779ccb8f69c5e64784a809ec2519d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomListButtons:
+  - {fileID: 282497096}
 --- !u!1 &282497094
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd823fa4e456fc14cbfa7d4fe827f8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomMenuButtons:
+  - {fileID: 1693951529}
+  - {fileID: 1969613828}
 --- !u!1 &352010941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1056,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de35870a2738cd4299dc9e68145d7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuButtons:
+  - {fileID: 2124410383}
+  - {fileID: 1101663095}
+  - {fileID: 1756377502}
 --- !u!1 &656801510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7efac97af0e3c4cae8e6c7331e18af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomFailedButtons: {fileID: 1800339108}
 --- !u!1 &855398948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4680c8accb14cf4eba458d7ec132317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createRoomButtons:
+  - {fileID: 855398950}
 --- !u!1 &940957897
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CreateRoomMenuButtons : MonoBehaviour
 {
-    Button[] createRoomButtons;
+    [SerializeField] Button[] createRoomButtons;
 
     void Start()
     {

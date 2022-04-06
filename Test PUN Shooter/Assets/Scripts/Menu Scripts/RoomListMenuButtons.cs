@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class RoomListMenuButtons : MonoBehaviour
 {
-    Button[] roomListButtons;
+    [SerializeField] Button[] roomListButtons;
 
     void Start()
     {

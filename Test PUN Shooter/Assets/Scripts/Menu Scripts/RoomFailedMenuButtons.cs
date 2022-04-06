@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class RoomFailedMenuButtons : MonoBehaviour
 {
-    void Start()
-    {
-        Button[] roomFailedButtons;
+    [SerializeField] Button roomFailedButtons;
 
+    void Start()
+    {       
         void Start()
         {
             gameObject.SetActive(false);
