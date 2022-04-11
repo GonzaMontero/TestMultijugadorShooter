@@ -7,9 +7,6 @@ public class RoomFailedMenuButtons : MonoBehaviour
 
     void Start()
     {       
-        void Start()
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);       
     }
 }

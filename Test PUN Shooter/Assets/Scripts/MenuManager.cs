@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,6 +29,10 @@ public class MenuManager : MonoBehaviour
             foreach (GameObject item in _menus)
             {
                 menus.Add(item.GetComponent<Menu>());
+                if (item.GetComponent<Menu>().name != "Loading")
+                {
+                    item.SetActive(false);
+                }               
             }
         }
     }

@@ -40,12 +40,13 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log("Connected to Master");
         PhotonNetwork.JoinLobby();
         PhotonNetwork.AutomaticallySyncScene = true;
+        MenuManager.Instance.CloseMenu("Loading");
     }
 
     public override void OnJoinedLobby()
     {
         MenuManager.Instance.OpenMenu("Title");
-        Debug.Log("Joined Lobby");        
+        Debug.Log("Joined Lobby");   
     }
 
     public void CreateRoom()
