@@ -17,13 +17,29 @@ public class MenuManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Instance = this;
 
+        StartUpGame();
         SceneManager.sceneLoaded += OnSceneneLoaded;
+    }
+
+    private void StartUpGame()
+    {
+        menus.Clear();
+        GameObject[] _menus = GameObject.FindGameObjectsWithTag("Main Menu");
+        foreach (GameObject item in _menus)
+        {
+            menus.Add(item.GetComponent<Menu>());
+            if (item.GetComponent<Menu>().name != "Loading")
+            {
+                CloseMenu(item.GetComponent<Menu>().name);
+            }
+        }
+
     }
 
     private void OnSceneneLoaded(Scene _scene, LoadSceneMode mode)
     {
         menus.Clear();
-        if(_scene.buildIndex==0)
+        if (_scene.buildIndex == 0)
         {
             GameObject[] _menus = GameObject.FindGameObjectsWithTag("Main Menu");
             foreach (GameObject item in _menus)
@@ -31,8 +47,8 @@ public class MenuManager : MonoBehaviour
                 menus.Add(item.GetComponent<Menu>());
                 if (item.GetComponent<Menu>().name != "Loading")
                 {
-                    item.SetActive(false);
-                }               
+                    CloseMenu(item.GetComponent<Menu>().name);
+                }
             }
         }
     }

@@ -494,6 +494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171308457}
   - component: {fileID: 171308458}
+  - component: {fileID: 171308459}
   m_Layer: 5
   m_Name: Room List Menu
   m_TagString: Main Menu
@@ -537,7 +538,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuName: Find Room
   open: 0
-  btn: []
+--- !u!114 &171308459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171308456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4779ccb8f69c5e64784a809ec2519d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomListButtons: []
 --- !u!1 &282497094
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 341656776}
   - component: {fileID: 341656775}
+  - component: {fileID: 341656777}
   m_Layer: 5
   m_Name: Room Menu
   m_TagString: Main Menu
@@ -702,7 +716,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuName: Room
   open: 0
-  btn: []
 --- !u!224 &341656776
 RectTransform:
   m_ObjectHideFlags: 0
@@ -726,6 +739,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &341656777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341656774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd823fa4e456fc14cbfa7d4fe827f8cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomMenuButtons: []
 --- !u!1 &352010941
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 649022574}
   - component: {fileID: 649022575}
+  - component: {fileID: 649022576}
   m_Layer: 5
   m_Name: Title Menu
   m_TagString: Main Menu
@@ -1013,10 +1040,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuName: Title
   open: 0
-  btn:
-  - {fileID: 2124410383}
-  - {fileID: 1101663095}
-  - {fileID: 1756377502}
+--- !u!114 &649022576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649022573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de35870a2738cd4299dc9e68145d7be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuButtons: []
 --- !u!1 &656801510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,6 +1579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848016955}
   - component: {fileID: 848016956}
+  - component: {fileID: 848016957}
   m_Layer: 5
   m_Name: Room Failed Menu
   m_TagString: Main Menu
@@ -1585,7 +1622,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuName: Error
   open: 0
-  btn: []
+--- !u!114 &848016957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848016954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7efac97af0e3c4cae8e6c7331e18af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomFailedButtons: {fileID: 0}
 --- !u!1 &855398948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 912687733}
   - component: {fileID: 912687734}
+  - component: {fileID: 912687735}
   m_Layer: 5
   m_Name: Create Room Menu
   m_TagString: Main Menu
@@ -2092,7 +2142,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuName: Create Room
   open: 0
-  btn: []
+--- !u!114 &912687735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912687732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4680c8accb14cf4eba458d7ec132317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createRoomButtons: []
 --- !u!1 &940957897
 GameObject:
   m_ObjectHideFlags: 0
@@ -4036,8 +4098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuName: Loading
-  open: 1
-  btn: []
+  open: 0
 --- !u!1 &1800339106
 GameObject:
   m_ObjectHideFlags: 0
