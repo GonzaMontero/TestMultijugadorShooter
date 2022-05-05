@@ -1,11 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
-    [SerializeField] List<Menu> menus;
+    [SerializeField] Menu[] menus;
 
     private void Awake()
     {
@@ -16,81 +16,46 @@ public class MenuManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         Instance = this;
-
-        StartUpGame();
-        SceneManager.sceneLoaded += OnSceneneLoaded;
-    }
-
-    private void StartUpGame()
-    {
-        menus.Clear();
-        GameObject[] _menus = GameObject.FindGameObjectsWithTag("Main Menu");
-        foreach (GameObject item in _menus)
-        {
-            menus.Add(item.GetComponent<Menu>());
-            if (item.GetComponent<Menu>().name != "Loading")
-            {
-                CloseMenu(item.GetComponent<Menu>().name);
-            }
-        }
-
-    }
-
-    private void OnSceneneLoaded(Scene _scene, LoadSceneMode mode)
-    {
-        menus.Clear();
-        if (_scene.buildIndex == 0)
-        {
-            GameObject[] _menus = GameObject.FindGameObjectsWithTag("Main Menu");
-            foreach (GameObject item in _menus)
-            {
-                menus.Add(item.GetComponent<Menu>());
-                if (item.GetComponent<Menu>().name != "Loading")
-                {
-                    CloseMenu(item.GetComponent<Menu>().name);
-                }
-            }
-        }
     }
 
     public void OpenMenu(string menuName)
     {
-        foreach (Menu item in menus)
+        for (int i = 0; i < menus.Length; i++)
         {
-            if (item.menuName == menuName)
+            if (menus[i].menuName == menuName)
             {
-                item.Open();
+                menus[i].Open();
             }
-            else if (item.open)
+            else if (menus[i].open)
             {
-                CloseMenu(item);
+                CloseMenu(menus[i]);
             }
         }
     }
 
     public void OpenMenu(Menu menu)
     {
-        foreach (Menu item in menus)
+        for (int i = 0; i < menus.Length; i++)
         {
-            if (item.open)
+            if (menus[i].open)
             {
-                item.Close();
+                menus[i].Close();
             }
         }
-        menu.Open();
+            menu.Open();
     }
 
     public void CloseMenu(string menuName)
     {
-        foreach (Menu item in menus)
+        for (int i = 0; i < menus.Length; i++)
         {
-            if (item.menuName == menuName)
+            if (menus[i].menuName == menuName)
             {
-                item.Close();
+                menus[i].Close();
             }
-            else if (item.open)
+            else if (menus[i].open)
             {
-                CloseMenu(item);
+                CloseMenu(menus[i]);
             }
         }
     }

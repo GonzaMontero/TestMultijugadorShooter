@@ -40,13 +40,13 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log("Connected to Master");
         PhotonNetwork.JoinLobby();
         PhotonNetwork.AutomaticallySyncScene = true;
-        MenuManager.Instance.CloseMenu("Loading");
     }
 
     public override void OnJoinedLobby()
     {
         MenuManager.Instance.OpenMenu("Title");
-        Debug.Log("Joined Lobby");   
+        Debug.Log("Joined Lobby");
+        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
     }
 
     public void CreateRoom()
@@ -129,7 +129,6 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        PhotonNetwork.LoadLevel(1);
-        MenuManager.Instance.CloseMenu("Room");
+        PhotonNetwork.LoadLevel(1);        
     }
 }
