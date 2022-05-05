@@ -37,31 +37,4 @@ public class GroundCheck : MonoBehaviour
         }
         player.SetGroundedState(true);
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == player.gameObject)
-        {
-            return;
-        }
-        player.SetGroundedState(true);
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject == player.gameObject)
-        {
-            return;
-        }
-        player.SetGroundedState(false);
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject == player.gameObject)
-        {
-            return;
-        }
-        player.SetGroundedState(true);
-    }
 }
