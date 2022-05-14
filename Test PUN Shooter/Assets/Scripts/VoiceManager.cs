@@ -4,10 +4,11 @@ using UnityEngine;
 using agora_gaming_rtc;
 using Photon.Pun;
 using System;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class VoiceManager : MonoBehaviourPunCallbacks
 {
-    [SerializeField] string appID = "bc0a3049b7724b22b52b1226a36f386b";
+    [SerializeField] string appID = "8b190e22fdf04fd4b5ff2f1e2fa35746";
     public static VoiceManager instance;
 
     IRtcEngine rtcEngine;
@@ -33,11 +34,18 @@ public class VoiceManager : MonoBehaviourPunCallbacks
         rtcEngine.OnJoinChannelSuccess += OnJoinChannelSuccess;
         rtcEngine.OnLeaveChannel += OnLeaveChannel;
         rtcEngine.OnError += OnError;
+
+        rtcEngine.EnableSoundPositionIndication(true);
     }
 
     private void OnError(int error, string msg)
     {
         Debug.LogError("Error With Agora: " + msg);
+    }
+
+    public IRtcEngine GetRtcEngine()
+    {
+        return rtcEngine;
     }
 
     void OnLeaveChannel(RtcStats stats)
@@ -48,6 +56,10 @@ public class VoiceManager : MonoBehaviourPunCallbacks
     void OnJoinChannelSuccess(string channelName, uint uid, int elapsed)
     {
         Debug.Log("Joined Channel: " + channelName);
+
+        Hashtable hash = new Hashtable();
+        hash.Add("agoraID", uid.ToString());
+        PhotonNetwork.SetPlayerCustomProperties(hash);
     }
 
     public override void OnJoinedRoom()
