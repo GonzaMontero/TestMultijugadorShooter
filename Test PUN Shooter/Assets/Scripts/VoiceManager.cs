@@ -8,7 +8,7 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class VoiceManager : MonoBehaviourPunCallbacks
 {
-    [SerializeField] string appID = "8b190e22fdf04fd4b5ff2f1e2fa35746";
+    [SerializeField] string appID;
     public static VoiceManager instance;
 
     IRtcEngine rtcEngine;
