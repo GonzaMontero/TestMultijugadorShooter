@@ -9,6 +9,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float mouseSensitivity, sprintspeed, walkspeed, jumpforce, smoothTime;
     [SerializeField] Rigidbody rb;
 
+    [SerializeField] Item[] items;
+
+    int itemIndex;
+    int previousItemIndex;
+
     float verticalLookRotation;
     bool grounded;
     Vector3 smoothMoveVelovity;
@@ -27,11 +32,15 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        if (!PV.IsMine)
+        if (PV.IsMine)
+        {
+            EquipItem(0);
+        }
+        else
         {
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
-        }    
+        }
     }
 
     private void Update()
@@ -43,6 +52,14 @@ public class PlayerController : MonoBehaviour
         Look();
         Move();
         Jump();
+
+        for(int i = 0; i < items.Length; i++)
+        {
+            if (Input.GetKeyDown((i + 1).ToString())){
+                EquipItem(i);
+                break;
+            }
+        }
 
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
@@ -61,6 +78,20 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpforce);
         }
+    }
+
+    void EquipItem(int _index)
+    {
+        itemIndex = _index;
+
+        items[itemIndex].itemGameObject.SetActive(true);
+
+        if (previousItemIndex != 1)
+        {
+            items[previousItemIndex].gameObject.SetActive(false);
+        }
+
+        previousItemIndex = itemIndex;
     }
 
     private void Look()
